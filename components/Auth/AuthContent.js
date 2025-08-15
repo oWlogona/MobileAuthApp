@@ -49,6 +49,12 @@ function AuthContent({ isLogin, onAuthenticate }) {
       });
       return;
     }
+    setCredentialsInvalid({
+      email: false,
+      confirmEmail: false,
+      password: false,
+      confirmPassword: false,
+    });
     onAuthenticate({ email, password });
   }
 

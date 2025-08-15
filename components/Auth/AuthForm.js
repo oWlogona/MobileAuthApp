@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 
 import Button from "../ui/Button";
@@ -9,6 +9,14 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
   const [enteredConfirmEmail, setEnteredConfirmEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [enteredConfirmPassword, setEnteredConfirmPassword] = useState("");
+
+  // Reset form state when component mounts or when switching between login/signup
+  useEffect(() => {
+    setEnteredEmail("");
+    setEnteredConfirmEmail("");
+    setEnteredPassword("");
+    setEnteredConfirmPassword("");
+  }, [isLogin]);
 
   const {
     email: emailIsInvalid,
